@@ -7,10 +7,10 @@ use CodeIgniter\Router\RouteCollection;
  */
 
 // Auth
-$routes->get('/', 'Auth::index');
-$routes->get('/login', 'Auth::index');
-$routes->post('/login', 'Auth::doLogin');
-$routes->get('/logout', 'Auth::logout');
+$routes->get('/', 'AuthController::index');
+$routes->get('/login', 'AuthController::index');
+$routes->post('/login', 'AuthController::doLogin');
+$routes->get('/logout', 'AuthController::logout');
 
 // Kasir (protected)
 $routes->group('kasir', ['filter' => 'auth:kasir,admin'], function($routes) {
