@@ -1,69 +1,189 @@
-# CodeIgniter 4 Application Starter
+# Website Pemesanan Makanan
 
-## What is CodeIgniter?
+Website pemesanan makanan berbasis web yang dibangun menggunakan framework CodeIgniter 4. Aplikasi ini memungkinkan pengguna untuk memesan makanan secara online dengan mudah dan efisien.
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+## 👥 Tim Pengembang
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+- [Patra-fjr](https://github.com/Patra-fjr)
+- [Taufik Dermawan](https://github.com/OnlyFiksa)
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+## 🚀 Teknologi yang Digunakan
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+- **Framework**: CodeIgniter 4.7
+- **PHP**: ^8.2
+- **Database**: MySQL/MariaDB
+- **Arsitektur**: MVC (Model-View-Controller)
 
-## Installation & updates
+## 📋 Fitur
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
+- 🍔 Katalog menu makanan
+- 🛒 Sistem pemesanan online
+- 👤 Manajemen user
+- 📊 Dashboard admin
+- 💳 Proses pembayaran
+- 📱 Responsive design
 
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
+## 📁 Struktur Proyek
 
-## Setup
+```
+Website-Pemesanan-Makanan/
+├── app/
+│   ├── Config/          # Konfigurasi aplikasi
+│   ├── Controllers/     # Controller
+│   ├── Models/          # Model database
+│   ├── Views/           # Template view
+│   ├── Database/        # Migrations & Seeds
+│   ├── Filters/         # HTTP Filters
+│   ├── Helpers/         # Helper functions
+│   ├── Language/        # File bahasa
+│   └── Libraries/       # Custom libraries
+├── public/              # Asset publik (CSS, JS, Images)
+├── tests/               # Unit tests
+├── writable/            # Log & cache files
+└── vendor/              # Dependencies
+```
 
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
+## 🛠️ Instalasi
 
-## Important Change with index.php
+### Persyaratan Sistem
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+- PHP 8.2 atau lebih tinggi
+- MySQL 5.7+ atau MariaDB
+- Composer
+- Web server (Apache/Nginx)
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+### Langkah Instalasi
 
-**Please** read the user guide for a better explanation of how CI4 works!
+1. **Clone repository**
+   ```bash
+   git clone https://github.com/Patra-fjr/Website-Pemesanan-Makanan.git
+   cd Website-Pemesanan-Makanan
+   ```
 
-## Repository Management
+2. **Install dependencies**
+   ```bash
+   composer install
+   ```
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+3. **Konfigurasi environment**
+   ```bash
+   cp env .env
+   ```
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+4. **Edit file `.env`**
+   - Sesuaikan konfigurasi database:
+   ```env
+   database.default.hostname = localhost
+   database.default.database = nama_database
+   database.default.username = username_db
+   database.default.password = password_db
+   database.default.DBDriver = MySQLi
+   ```
 
-## Server Requirements
+5. **Jalankan migrasi database**
+   ```bash
+   php spark migrate
+   ```
 
-PHP version 8.2 or higher is required, with the following extensions installed:
+6. **Jalankan seeder (opsional)**
+   ```bash
+   php spark db:seed NamaSeeder
+   ```
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
+7. **Jalankan development server**
+   ```bash
+   php spark serve
+   ```
 
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - The end of life date for PHP 8.1 was December 31, 2025.
-> - If you are still using below PHP 8.2, you should upgrade immediately.
-> - The end of life date for PHP 8.2 will be December 31, 2026.
+8. **Buka browser**
+   ```
+   http://localhost:8080
+   ```
 
-Additionally, make sure that the following extensions are enabled in your PHP:
+## 🔧 Konfigurasi
 
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+### Database
+Konfigurasi database dapat diatur di file `.env`:
+
+```env
+database.default.hostname = localhost
+database.default.database = db_pemesanan_makanan
+database.default.username = root
+database.default.password = 
+database.default.DBDriver = MySQLi
+database.default.DBPrefix = 
+```
+
+### Base URL
+Sesuaikan base URL di file `.env`:
+
+```env
+app.baseURL = 'http://localhost:8080/'
+```
+
+## 📝 Penggunaan
+
+### Untuk Admin
+1. Login ke halaman admin
+2. Kelola menu makanan
+3. Monitor pesanan masuk
+4. Kelola data pelanggan
+
+### Untuk Customer
+1. Registrasi/Login
+2. Browse menu makanan
+3. Tambahkan ke keranjang
+4. Checkout dan pembayaran
+
+## 🧪 Testing
+
+Jalankan unit test dengan PHPUnit:
+
+```bash
+composer test
+```
+
+atau
+
+```bash
+vendor/bin/phpunit
+```
+
+## 📦 Dependencies
+
+### Production
+- `codeigniter4/framework`: ^4.7
+
+### Development
+- `fakerphp/faker`: ^1.9
+- `mikey179/vfsstream`: ^1.6
+- `phpunit/phpunit`: ^10.5.16
+
+## 🤝 Kontribusi
+
+Kontribusi sangat diterima! Silakan:
+
+1. Fork repository ini
+2. Buat branch fitur baru (`git checkout -b feature/AmazingFeature`)
+3. Commit perubahan (`git commit -m 'Add some AmazingFeature'`)
+4. Push ke branch (`git push origin feature/AmazingFeature`)
+5. Buat Pull Request
+
+## 📄 Lisensi
+
+Proyek ini dilisensikan di bawah [MIT License](LICENSE).
+
+## 📞 Kontak
+
+- **Patra-fjr** - [@Patra-fjr](https://github.com/Patra-fjr)
+- **Taufik Dermawan** - [@OnlyFiksa](https://github.com/OnlyFiksa)
+
+## 🙏 Acknowledgments
+
+- CodeIgniter 4 Framework
+- Komunitas PHP Indonesia
+- Semua kontributor yang telah membantu proyek ini
+
+---
+
+⭐ Jika proyek ini membantu Anda, jangan lupa untuk memberikan star!
